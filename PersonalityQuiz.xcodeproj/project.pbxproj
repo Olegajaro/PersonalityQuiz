@@ -56,15 +56,55 @@
 		109FBCFB26D9381E00FA449B /* PersonalityQuiz */ = {
 			isa = PBXGroup;
 			children = (
-				109FBCFC26D9381E00FA449B /* AppDelegate.swift */,
-				109FBCFE26D9381E00FA449B /* SceneDelegate.swift */,
-				109FBD0026D9381E00FA449B /* ViewController.swift */,
-				109FBD0226D9381E00FA449B /* Main.storyboard */,
-				109FBD0526D9381F00FA449B /* Assets.xcassets */,
-				109FBD0726D9381F00FA449B /* LaunchScreen.storyboard */,
-				109FBD0A26D9381F00FA449B /* Info.plist */,
+				109FBD1026D94B1C00FA449B /* ViewControllers */,
+				109FBD1426D94C3100FA449B /* Models */,
+				109FBD1126D94B4300FA449B /* Storyboards */,
+				109FBD1326D94B8E00FA449B /* App */,
+				109FBD1226D94B5A00FA449B /* Resources */,
 			);
 			path = PersonalityQuiz;
+			sourceTree = "<group>";
+		};
+		109FBD1026D94B1C00FA449B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				109FBD0026D9381E00FA449B /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		109FBD1126D94B4300FA449B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				109FBD0226D9381E00FA449B /* Main.storyboard */,
+				109FBD0726D9381F00FA449B /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		109FBD1226D94B5A00FA449B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				109FBD0526D9381F00FA449B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		109FBD1326D94B8E00FA449B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				109FBCFC26D9381E00FA449B /* AppDelegate.swift */,
+				109FBCFE26D9381E00FA449B /* SceneDelegate.swift */,
+				109FBD0A26D9381F00FA449B /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		109FBD1426D94C3100FA449B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +328,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QGLMKQL94J;
-				INFOPLIST_FILE = PersonalityQuiz/Info.plist;
+				INFOPLIST_FILE = PersonalityQuiz/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +347,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QGLMKQL94J;
-				INFOPLIST_FILE = PersonalityQuiz/Info.plist;
+				INFOPLIST_FILE = PersonalityQuiz/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

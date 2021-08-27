@@ -29,6 +29,9 @@
                                         <rect key="frame" x="81" y="52" width="126" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Начать опрос"/>
+                                        <connections>
+                                            <segue destination="Cq3-9r-l2U" kind="presentation" identifier="Answers" modalPresentationStyle="fullScreen" id="YCE-k9-CXI"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -78,7 +81,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="76"/>
+            <point key="canvasLocation" x="154" y="75"/>
+        </scene>
+        <!--Вопрос №-->
+        <scene sceneID="dpA-no-fyD">
+            <objects>
+                <viewController id="tMV-K6-mxo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ClQ-95-FMU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="D6r-og-3al"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Вопрос №" id="ZB6-zx-0Nl"/>
+                    <connections>
+                        <segue destination="Mg7-mh-grz" kind="show" identifier="showResult" id="tXM-oc-wpP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wf2-P6-w9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1583" y="75"/>
+        </scene>
+        <!--Результат-->
+        <scene sceneID="9Ex-kU-h0T">
+            <objects>
+                <viewController id="Mg7-mh-grz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EX-dj-Qb2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Vzx-IV-iaX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Результат" id="eXa-Ob-Tfp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HmC-uB-8rr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2306" y="75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ccd-0n-rd1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cq3-9r-l2U" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="LID-QW-ev4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tMV-K6-mxo" kind="relationship" relationship="rootViewController" id="cdO-dC-s5u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iyT-5y-oCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="860.625" y="75"/>
         </scene>
     </scenes>
     <resources>

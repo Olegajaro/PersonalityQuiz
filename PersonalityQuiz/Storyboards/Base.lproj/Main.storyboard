@@ -333,6 +333,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="definitionLabel" destination="D4p-yW-t06" id="FFi-lt-iBH"/>
+                        <outlet property="resultLabel" destination="3dd-WX-dzJ" id="NIO-5i-013"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HmC-uB-8rr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="OSi-Qd-65n" userLabel="Exit" sceneMemberID="exit"/>

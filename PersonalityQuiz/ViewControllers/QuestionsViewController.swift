@@ -57,6 +57,14 @@ class QuestionsViewController: UIViewController {
         updateUI()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showResult" {
+            guard let resultVC = segue.destination as? ResultViewController else { return }
+            
+            resultVC.answers = answersChosen
+        }
+    }
+    
     // создаем экшн для всех кнопок, которые находятся в singleStackView
     // первым действием определяем индекс нажатой кнопки
     // вторым действием, когда у нас есть индекс кнопки, извлекаем из массива ответов currentAnswers конкретный ответ выбранный пользователем

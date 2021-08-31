@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10036E0A26DE42A80064E35B /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10036E0926DE42A80064E35B /* QuestionsViewController.swift */; };
+		10036E0C26DE42B50064E35B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10036E0B26DE42B50064E35B /* ResultViewController.swift */; };
 		109FBCFD26D9381E00FA449B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109FBCFC26D9381E00FA449B /* AppDelegate.swift */; };
 		109FBCFF26D9381E00FA449B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109FBCFE26D9381E00FA449B /* SceneDelegate.swift */; };
-		109FBD0126D9381E00FA449B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109FBD0026D9381E00FA449B /* ViewController.swift */; };
+		109FBD0126D9381E00FA449B /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109FBD0026D9381E00FA449B /* IntroductionViewController.swift */; };
 		109FBD0426D9381E00FA449B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109FBD0226D9381E00FA449B /* Main.storyboard */; };
 		109FBD0626D9381F00FA449B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 109FBD0526D9381F00FA449B /* Assets.xcassets */; };
 		109FBD0926D9381F00FA449B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 109FBD0726D9381F00FA449B /* LaunchScreen.storyboard */; };
@@ -17,10 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10036E0926DE42A80064E35B /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
+		10036E0B26DE42B50064E35B /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		109FBCF926D9381E00FA449B /* PersonalityQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalityQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109FBCFC26D9381E00FA449B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		109FBCFE26D9381E00FA449B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		109FBD0026D9381E00FA449B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		109FBD0026D9381E00FA449B /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		109FBD0326D9381E00FA449B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		109FBD0526D9381F00FA449B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		109FBD0826D9381F00FA449B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,7 +74,9 @@
 		109FBD1026D94B1C00FA449B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				109FBD0026D9381E00FA449B /* ViewController.swift */,
+				109FBD0026D9381E00FA449B /* IntroductionViewController.swift */,
+				10036E0926DE42A80064E35B /* QuestionsViewController.swift */,
+				10036E0B26DE42B50064E35B /* ResultViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -180,10 +186,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				109FBD0126D9381E00FA449B /* ViewController.swift in Sources */,
+				109FBD0126D9381E00FA449B /* IntroductionViewController.swift in Sources */,
+				10036E0A26DE42A80064E35B /* QuestionsViewController.swift in Sources */,
 				109FBD1626D94E9700FA449B /* Question.swift in Sources */,
 				109FBCFD26D9381E00FA449B /* AppDelegate.swift in Sources */,
 				109FBCFF26D9381E00FA449B /* SceneDelegate.swift in Sources */,
+				10036E0C26DE42B50064E35B /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,6 +40,9 @@ class QuestionsViewController: UIViewController {
     private var currentAnswers: [Answer] {
         questions[questionIndex].answers
     }
+    // создаем свойство, которое будет содержать массив выбранных нами ответов
+    // помещать ответы в него мы будем при помощи экшенов, которые мы создали для кнопок
+    private var answersChosen: [Answer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +51,29 @@ class QuestionsViewController: UIViewController {
     }
     
     // создаем экшн для всех кнопок, которые находятся в singleStackView
+    // первым действием определяем индекс нажатой кнопки
+    // вторым действием, когда у нас есть индекс кнопки, извлекаем из массива ответов currentAnswers конкретный ответ выбранный пользователем
+    // третьем действием нам нужно положить currentAnswer в массив выбранных ответов
+    // четвертым действием нужно обновить интерфейс, для этого нужно вызвать метод nextQuestion(), который вызовет следующий вопрос либо вызовет экран с результатами
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
+        guard let buttonIndex = singleButtons.firstIndex(of: sender) else { return }
+        let currentAnswer = currentAnswers[buttonIndex]
+        answersChosen.append(currentAnswer)
+        
+        nextQuestion()
     }
     
     // создаем экшн для кнопки, которая находится в multipleStackView
+    // первым действием перебираем множество элементов multipleSwitch и answer из массивов multipleSwitches и currentAnswers, с помощью метода zip, в теле цикла будем осуществлять проверку, если multipleSwitch включен, то мы добавляем ответ в массив выбранных ответов answersChosen
+    // вторым действием вызываем метод nextQuestion(), для перехода к следующему вопросу 
     @IBAction func multipleAnswerButtonPressed() {
+        for (multipleSwitch, answer) in zip(multipleSwitches, currentAnswers) {
+            if multipleSwitch.isOn {
+                answersChosen.append(answer)
+            }
+        }
+        
+        nextQuestion()
     }
     
     // создаем экшн для кнопки, которая находится в rangedStackView
@@ -98,12 +119,13 @@ extension QuestionsViewController {
     // у метода будет параметр type с типом ResponseType (это перечисление типов вопроса из нашей основной модели)
     // внутри с помощью switch для нашего параметра type, мы будем перебирать наши типы вопросов из модели
     // для первого кейса будет выполняться метод showSingleStackView, который принимает параметр currentAnswers, вычисляемое свойство, которое содержит в себе массив ответов для текущего вопроса
+    // для второго кейса будет выполняться метод showMultipleStackView, который принимает параметр currentAnswers, которое содержит в себе массив ответов для текущего вопроса
     private func showCurrentAnswers(for type: ResponseType) {
         switch type {
         case .single:
             showSingleStackView(with: currentAnswers)
         case .multiple:
-            break
+            showMultipleStackView(with: currentAnswers)
         case .ranged:
             break
         }
@@ -124,5 +146,33 @@ extension QuestionsViewController {
         for (button, answer) in zip(singleButtons,answers) {
             button.setTitle(answer.title, for: .normal)
         }
+    }
+    
+    // создаем метод для отображения стек для вопроса, где может быть несколько вариантов ответа
+    // первым действием мы будем показывать на экран multipleStackView
+    // вторым действием перебираем элементы label и answer из двух массивов multipleLabels и answers
+    // для этого так же как и в методе showSingleStackView используем метод zip
+    // внутри цикла for для лейблов из массива multipleLabels присваиваем значения answer.title, которые находятся в массиве answers
+    private func showMultipleStackView(with answers: [Answer]) {
+        multipleStackView.isHidden.toggle()
+        
+        for (label, answer) in zip(multipleLabels, answers) {
+            label.text = answer.title
+        }
+    }
+    
+    // создаем метод для перехода к следующему вопросу или для перехода на экран результаты
+    // первым действием увеличивает questionIndex на 1, для того, чтобы перейти к следующему элементу в массиве questions
+    // вторым действием делаем проверку, если индекс вопроса меньше количества элементов в массиве questions, то вызываем метод updateUI(), который вызывает уже следующий стек с новым вопросом и ответами, после чего выходит из метода
+    // третье действие это переход по сегвею на экран результатов, если индекс вопроса не соответствует проверке из второго действия
+    private func nextQuestion() {
+        questionIndex += 1
+        
+        if questionIndex < questions.count {
+            updateUI()
+            return
+        }
+        
+        performSegue(withIdentifier: "showResult", sender: nil)
     }
 }

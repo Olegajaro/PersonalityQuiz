@@ -24,12 +24,19 @@ class QuestionsViewController: UIViewController {
     @IBOutlet var multipleLabels: [UILabel]!
     @IBOutlet var multipleSwitches: [UISwitch]!
     
-    // создаем аутлет для стека, который содержит ответы на вопрос, которые выбираются исходя из значения слайдера
+    // создаем аутлет для стека, который содержит ответы на вопрос, которые выбираются исходя из положения слайдера
     // создаем массив с названиями ответов для крайних значений слайдера
     // создаем аутлет слайдера
+    // для слайдера создаем обсервер, который будет устанавливать максимальное значение для слайдера, зависящее от количества элементов в массиве currentAnswers, и так же устанавливает стандартное значение слайдера, которое всегда равно количество ответов разделенному на 2 (то есть по середине располагается)
     @IBOutlet var rangedStackView: UIStackView!
     @IBOutlet var rangedLabels: [UILabel]!
-    @IBOutlet var rangedSlider: UISlider!
+    @IBOutlet var rangedSlider: UISlider! {
+        didSet {
+            let answerCount = Float(currentAnswers.count - 1)
+            rangedSlider.maximumValue = answerCount
+            rangedSlider.value = answerCount / 2
+        }
+    }
     
     // создаем приватное свойство, которое на базе нашей модели, создает нам массив с вопросами
     private let questions = Question.getQuestions()
@@ -65,7 +72,7 @@ class QuestionsViewController: UIViewController {
     
     // создаем экшн для кнопки, которая находится в multipleStackView
     // первым действием перебираем множество элементов multipleSwitch и answer из массивов multipleSwitches и currentAnswers, с помощью метода zip, в теле цикла будем осуществлять проверку, если multipleSwitch включен, то мы добавляем ответ в массив выбранных ответов answersChosen
-    // вторым действием вызываем метод nextQuestion(), для перехода к следующему вопросу 
+    // вторым действием вызываем метод nextQuestion(), для перехода к следующему вопросу
     @IBAction func multipleAnswerButtonPressed() {
         for (multipleSwitch, answer) in zip(multipleSwitches, currentAnswers) {
             if multipleSwitch.isOn {
@@ -77,7 +84,13 @@ class QuestionsViewController: UIViewController {
     }
     
     // создаем экшн для кнопки, которая находится в rangedStackView
+    // первым действием создаем константу индекс, которая зависит от значения rangedSlider, так как значение слайдера с типом Float, а индекс с типом Int, надо значение слайдера подставить в функцию lrintf, которая значение с типом Float приводит к типу Int (правильно округляя до целых)
+    // вторым действием добавляем в массив выбранных ответов ответ из массива currentAnswers с индексом, который мы высчитали в зависимости от положения слайдера
+    // третьим действием вызываем метод nextQuestion(), который в нашем случае должен переходить на экран результатов
     @IBAction func rangedAnswerButtonPressed() {
+        let index = lrintf(rangedSlider.value)
+        answersChosen.append(currentAnswers[index])
+        nextQuestion()
     }
 }
 
@@ -119,7 +132,8 @@ extension QuestionsViewController {
     // у метода будет параметр type с типом ResponseType (это перечисление типов вопроса из нашей основной модели)
     // внутри с помощью switch для нашего параметра type, мы будем перебирать наши типы вопросов из модели
     // для первого кейса будет выполняться метод showSingleStackView, который принимает параметр currentAnswers, вычисляемое свойство, которое содержит в себе массив ответов для текущего вопроса
-    // для второго кейса будет выполняться метод showMultipleStackView, который принимает параметр currentAnswers, которое содержит в себе массив ответов для текущего вопроса
+    // для второго кейса будет выполняться метод showMultipleStackView, который принимает параметр currentAnswers, который содержит в себе массив ответов для текущего вопроса
+    // для третьего кейса будет выполнять метод showRangedStackView, который принимает параметр currentAnswers, который содержит в себе массив ответов для текущего вопроса
     private func showCurrentAnswers(for type: ResponseType) {
         switch type {
         case .single:
@@ -127,7 +141,7 @@ extension QuestionsViewController {
         case .multiple:
             showMultipleStackView(with: currentAnswers)
         case .ranged:
-            break
+            showRangedStackView(with: currentAnswers)
         }
     }
     
@@ -148,7 +162,7 @@ extension QuestionsViewController {
         }
     }
     
-    // создаем метод для отображения стек для вопроса, где может быть несколько вариантов ответа
+    // создаем метод для отображения стека для вопроса, где может быть несколько вариантов ответа
     // первым действием мы будем показывать на экран multipleStackView
     // вторым действием перебираем элементы label и answer из двух массивов multipleLabels и answers
     // для этого так же как и в методе showSingleStackView используем метод zip
@@ -159,6 +173,18 @@ extension QuestionsViewController {
         for (label, answer) in zip(multipleLabels, answers) {
             label.text = answer.title
         }
+    }
+    
+    // создаем метод для отображения стека для вопроса, где содержатся ответы, которые выбираются исходя из положения слайдера
+    // первым действием показываем на экран rangedStackView
+    // вторым действием присваиваем массиву лейблов, которые находятся в этом стеке, значения ответов из массива answers
+    // так как у нас 2 лейбла, а ответа 4, то нам нужно отобразить только 2 элемента из массива answers, первый и последний
+    // при помощи методов first и last присваиваем текстовому значению первого элемента массива rangedLabels название первого ответа из массива answers, аналогично для текстового значения последнего элемента массива rangedLabels присваиваем название последнего ответа из массива answers
+    private func showRangedStackView(with answers: [Answer]) {
+        rangedStackView.isHidden.toggle()
+        
+        rangedLabels.first?.text = answers.first?.title
+        rangedLabels.last?.text = answers.last?.title
     }
     
     // создаем метод для перехода к следующему вопросу или для перехода на экран результаты

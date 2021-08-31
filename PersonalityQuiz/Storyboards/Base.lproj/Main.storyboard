@@ -263,13 +263,7 @@
                             <constraint firstItem="iEC-if-m5k" firstAttribute="top" secondItem="OF6-Qd-uVl" secondAttribute="bottom" constant="16" id="rWB-QM-omn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Вопрос №" id="ZB6-zx-0Nl">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="ZHb-Zh-RCM">
-                            <connections>
-                                <segue destination="Mg7-mh-grz" kind="show" id="t2p-87-oN6"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Вопрос №" id="ZB6-zx-0Nl"/>
                     <connections>
                         <outlet property="multipleStackView" destination="nHl-7B-dsb" id="82v-Qo-8Z1"/>
                         <outlet property="questionLabel" destination="iEC-if-m5k" id="HZa-hS-sYz"/>
@@ -364,9 +358,6 @@
             <point key="canvasLocation" x="860.625" y="75"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="tXM-oc-wpP"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

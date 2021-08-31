@@ -35,6 +35,11 @@ class QuestionsViewController: UIViewController {
     private let questions = Question.getQuestions()
     // создаем еще одно приватное свойство, которое будет отображать индекс вопроса в массиве, свойство будет вычисляемым
     private var questionIndex = 0
+    // создаем приватное свойство, которое извлекает массив ответов из каждого элемента массива questions
+    // свойство будет вычисляемым, в зависимости от индекса элемента будем извлекать нужный массив ответов
+    private var currentAnswers: [Answer] {
+        questions[questionIndex].answers
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,14 +97,32 @@ extension QuestionsViewController {
     // создаем метод, который нам нужен для метода updateUI(), чтобы отображать ответы текущего вопроса
     // у метода будет параметр type с типом ResponseType (это перечисление типов вопроса из нашей основной модели)
     // внутри с помощью switch для нашего параметра type, мы будем перебирать наши типы вопросов из модели
+    // для первого кейса будет выполняться метод showSingleStackView, который принимает параметр currentAnswers, вычисляемое свойство, которое содержит в себе массив ответов для текущего вопроса
     private func showCurrentAnswers(for type: ResponseType) {
         switch type {
         case .single:
-            break
+            showSingleStackView(with: currentAnswers)
         case .multiple:
             break
         case .ranged:
             break
+        }
+    }
+    
+    // отображаем стек с одиночными ответами
+    // для этого создаем новый метод, который мы будем передавать для кейса .single функции showCurrentAnswers
+    // метод будет иметь параметр answers с типом [Answer] (это массив ответов из нашей модели)
+    // первым действием в методе мы будет показывать на экран singleStackView
+    // вторым действием мы будем перебирать элементы button и answer из двух массивов singleButtons и answers
+    // для того, чтобы бы перебрать таким образом два массива их нужно объединить при помощи метода zip
+    // метод zip формирует из двух последовательностей одну, где каждый элемент этих последовательностей соотносится друг с другом
+    // массив answers мы берем из нашей модели
+    // внутри цикла for для кнопок из массива singleButtons присваиваем значения answer.title (title свойство из модели), которые находятся в массиве answers
+    private func showSingleStackView(with answers: [Answer]) {
+        singleStackView.isHidden.toggle()
+        
+        for (button, answer) in zip(singleButtons,answers) {
+            button.setTitle(answer.title, for: .normal)
         }
     }
 }

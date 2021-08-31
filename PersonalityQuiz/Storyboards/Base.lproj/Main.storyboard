@@ -97,18 +97,30 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nL-sZ-iH6">
                                         <rect key="frame" x="121" y="0.0" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="singleAnswerButtonPressed:" destination="tMV-K6-mxo" eventType="touchUpInside" id="L5X-Mm-tzo"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efv-2Y-dJZ">
                                         <rect key="frame" x="121" y="46" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="singleAnswerButtonPressed:" destination="tMV-K6-mxo" eventType="touchUpInside" id="2qD-MO-08W"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fm-Rc-QPl">
                                         <rect key="frame" x="121" y="92" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="singleAnswerButtonPressed:" destination="tMV-K6-mxo" eventType="touchUpInside" id="zzt-kQ-chz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A5Z-jN-9n4">
                                         <rect key="frame" x="121" y="138" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="singleAnswerButtonPressed:" destination="tMV-K6-mxo" eventType="touchUpInside" id="9pp-9f-K9P"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -174,6 +186,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OW0-Yf-kA1">
                                         <rect key="frame" x="0.0" y="188" width="288" height="30"/>
                                         <state key="normal" title="Ответить"/>
+                                        <connections>
+                                            <action selector="multipleAnswerButtonPressed" destination="tMV-K6-mxo" eventType="touchUpInside" id="0nU-6O-65n"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -203,6 +218,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7X-an-nN8">
                                         <rect key="frame" x="0.0" y="112.5" width="288" height="30"/>
                                         <state key="normal" title="Ответить"/>
+                                        <connections>
+                                            <action selector="rangedAnswerButtonPressed" destination="tMV-K6-mxo" eventType="touchUpInside" id="fWI-eS-GW1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -253,6 +271,26 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="multipleStackView" destination="nHl-7B-dsb" id="82v-Qo-8Z1"/>
+                        <outlet property="questionLabel" destination="iEC-if-m5k" id="HZa-hS-sYz"/>
+                        <outlet property="questionsProgressView" destination="OF6-Qd-uVl" id="aRB-hE-szv"/>
+                        <outlet property="rangedSlider" destination="Uqp-Bw-x3g" id="rIS-ld-gwN"/>
+                        <outlet property="rangedStackView" destination="zmC-7k-O7F" id="DzD-gl-GT2"/>
+                        <outlet property="singleStackView" destination="5v0-AS-TTA" id="yHX-jw-Dus"/>
+                        <outletCollection property="singleButtons" destination="8nL-sZ-iH6" collectionClass="NSMutableArray" id="d3B-SP-lA7"/>
+                        <outletCollection property="singleButtons" destination="Efv-2Y-dJZ" collectionClass="NSMutableArray" id="R57-db-CbA"/>
+                        <outletCollection property="singleButtons" destination="2Fm-Rc-QPl" collectionClass="NSMutableArray" id="dP5-xJ-X2y"/>
+                        <outletCollection property="singleButtons" destination="A5Z-jN-9n4" collectionClass="NSMutableArray" id="Srz-T9-5ms"/>
+                        <outletCollection property="multipleLabels" destination="0nQ-Ih-g5s" collectionClass="NSMutableArray" id="rYq-7y-jYO"/>
+                        <outletCollection property="multipleLabels" destination="mpr-1k-dpa" collectionClass="NSMutableArray" id="dMs-OY-nC1"/>
+                        <outletCollection property="multipleLabels" destination="QWR-TV-lRI" collectionClass="NSMutableArray" id="Ylk-JV-FLJ"/>
+                        <outletCollection property="multipleLabels" destination="Ggo-TA-TBe" collectionClass="NSMutableArray" id="QSz-uC-kdO"/>
+                        <outletCollection property="multipleSwitches" destination="Chg-cG-lTJ" collectionClass="NSMutableArray" id="HS1-Xw-PIB"/>
+                        <outletCollection property="multipleSwitches" destination="tZD-tD-Vrb" collectionClass="NSMutableArray" id="Hzk-7l-Ygi"/>
+                        <outletCollection property="multipleSwitches" destination="kIT-UP-5ce" collectionClass="NSMutableArray" id="kZ6-DJ-tGW"/>
+                        <outletCollection property="multipleSwitches" destination="mvd-qQ-eVb" collectionClass="NSMutableArray" id="Ud3-x5-gS8"/>
+                        <outletCollection property="rangedLabels" destination="5MC-uD-crL" collectionClass="NSMutableArray" id="t0p-uZ-d21"/>
+                        <outletCollection property="rangedLabels" destination="kYk-lr-rNd" collectionClass="NSMutableArray" id="H7y-Lw-hn2"/>
                         <segue destination="Mg7-mh-grz" kind="show" identifier="showResult" id="tXM-oc-wpP"/>
                     </connections>
                 </viewController>

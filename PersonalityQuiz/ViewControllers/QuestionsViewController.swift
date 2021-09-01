@@ -8,7 +8,7 @@
 import UIKit
 
 class QuestionsViewController: UIViewController {
-    // MARK: -
+    // MARK: - IBOutlets
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var questionsProgressView: UIProgressView!
     
@@ -29,13 +29,15 @@ class QuestionsViewController: UIViewController {
         }
     }
     
+    // MARK: - Private properties
     private let questions = Question.getQuestions()
     private var questionIndex = 0
     private var currentAnswers: [Answer] {
         questions[questionIndex].answers
     }
     private var answersChosen: [Answer] = []
-    
+
+    // MARK: - Navigation
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +52,7 @@ class QuestionsViewController: UIViewController {
         }
     }
     
+    // MARK: - IBActions
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
         guard let buttonIndex = singleButtons.firstIndex(of: sender) else { return }
         let currentAnswer = currentAnswers[buttonIndex]
@@ -64,7 +67,7 @@ class QuestionsViewController: UIViewController {
                 answersChosen.append(answer)
             }
         }
-        
+
         nextQuestion()
     }
     
